@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import top.theprimone.springbootpractice.bean.Admin;
 
 @SpringBootTest
-class DemoApplicationTests {
+class PracticeApplicationTests {
 
 	@Autowired
 	Admin admin;
