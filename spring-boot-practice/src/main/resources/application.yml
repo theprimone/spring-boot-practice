@@ -1,0 +1,9 @@
+admin:
+  username: "theprimone"
+  password: "password"
+  name: "小桥流水人家"
+  other-properties:
+    gender: "man"
+  phone-numbers:
+  - 17612341234
+  - 15912341234
