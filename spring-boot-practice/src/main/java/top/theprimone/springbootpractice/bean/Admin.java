@@ -4,17 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
+@PropertySource(value = { "classpath:admin.properties" })
 @Component
 @ConfigurationProperties(prefix = "admin")
-public class Admin {
-
-  private String username;
-
-  private String password;
-
-  private String name;
+public class Admin extends Person {
 
   private Map<String, Object> otherProperties;
 
@@ -22,24 +18,7 @@ public class Admin {
 
   @Override
   public String toString() {
-    return "Admin [name=" + name + ", otherProperties=" + otherProperties + ", password=" + password + ", phoneNumbers="
-        + phoneNumbers + ", username=" + username + "]";
-  }
-
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
+    return "Admin [otherProperties=" + otherProperties + ", phoneNumbers=" + phoneNumbers + "]";
   }
 
   public Map<String, Object> getOtherProperties() {
@@ -58,12 +37,4 @@ public class Admin {
     this.phoneNumbers = phoneNumbers;
   }
 
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-  
 }
