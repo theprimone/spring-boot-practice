@@ -2,15 +2,17 @@ package top.theprimone.springbootpractice.bean;
 
 public class Person {
 
-  public String username;
+  private long id;
 
-  public String password;
+  private String username;
 
-  public String name;
+  private String password;
+
+  private String name;
 
   @Override
   public String toString() {
-    return "Person [name=" + name + ", password=" + password + ", username=" + username + "]";
+    return "Person [id=" + id + ", name=" + name + ", password=" + password + ", username=" + username + "]";
   }
 
   public String getUsername() {
@@ -35,6 +37,14 @@ public class Person {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
   }
   
 }
