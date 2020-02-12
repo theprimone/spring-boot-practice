@@ -16,34 +16,38 @@ import top.theprimone.springbootpractice.bean.Message;
 import top.theprimone.springbootpractice.bean.Person;
 
 @RestController
+@RequestMapping("/persons")
 public class PersonsController {
 
   private static List<Person> persons = new ArrayList<>();
   
   static {
     Person aa = new Person();
+    aa.setId(1);
     aa.setName("AA");
     aa.setUsername("AA");
     persons.add(aa);
 
     Person bb = new Person();
+    bb.setId(2);
     bb.setName("BB");
     bb.setUsername("BB");
     persons.add(bb);
   }
 
-  @RequestMapping(value = "/persons", method = RequestMethod.GET)
+  @RequestMapping(method = RequestMethod.GET)
   public ResponseEntity<Object> getPersons() {
     return new ResponseEntity<>(persons, HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/persons", method = RequestMethod.POST)
+  @RequestMapping(method = RequestMethod.POST)
   public ResponseEntity<Object> createPerson(@RequestBody Person person) {
+    person.setId(persons.size() + 1);
     persons.add(person);
-    return new ResponseEntity<>("person is created successfully", HttpStatus.CREATED);
+    return new ResponseEntity<>(person, HttpStatus.CREATED);
   }
 
-  @RequestMapping(value = "/persons/{name}", method = RequestMethod.GET)
+  @RequestMapping(value = "/{name}", method = RequestMethod.GET)
   public ResponseEntity<Object> getPersonByName(@PathVariable("name") String name) {
     List<Person> result = persons.stream().filter((Person person) -> person.getName().equals(name)).collect(Collectors.toList());
     return new ResponseEntity<>(!result.isEmpty() ? result : new Message("Not found", "No reference"), HttpStatus.OK);
